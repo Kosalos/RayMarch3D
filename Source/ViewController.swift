@@ -84,16 +84,16 @@ class ViewController: UIViewController {
         dList.append(cameraXY)
         dList.append(focusXY)
 
-        cameraZ.initializeFloat(&control.cameraZ, .delta, cameraMin, cameraMax, 0.25, "Camera Z")
-        focusZ.initializeFloat(&control.focusZ, .delta, focusMin, focusMax, 0.25, "Focus Z")
+        cameraZ.initializeFloat(&control.cameraZ, .delta, cameraMin, cameraMax, 0.125, "Camera Z")
+        focusZ.initializeFloat(&control.focusZ, .delta, focusMin, focusMax, 1, "Focus Z")
         iterMin.initializeInt32(&control.iterMin, .direct, Float(1), Float(10), 10, "Iter Min")
         iterWidth.initializeInt32(&control.iterWidth, .direct, Float(1), Float(40), 10, "Iter Width")
         zoom.initializeFloat(&control.zoom, .delta, zoomMin, zoomMax, 2, "Zoom")
         power.initializeFloat(&control.power, .delta, powerMin, powerMax, 0.25, "Power")
         
-        cameraXY.initializeFloat1(&control.cameraX, cameraMin, cameraMax, 0.25, "Camera XY")
+        cameraXY.initializeFloat1(&control.cameraX, cameraMin, cameraMax, 0.125, "Camera XY")
         cameraXY.initializeFloat2(&control.cameraY)
-        focusXY.initializeFloat1(&control.focusX, focusMin,focusMax, 0.25, "Focus XY")
+        focusXY.initializeFloat1(&control.focusX, focusMin,focusMax, 1, "Focus XY")
         focusXY.initializeFloat2(&control.focusY)
 
         timer = Timer.scheduledTimer(timeInterval: 1.0/30.0, target:self, selector: #selector(timerHandler), userInfo: nil, repeats:true)

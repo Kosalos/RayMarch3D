@@ -102,9 +102,9 @@ float3 march(float3 position, float3 direction, Control control) {
         if(c >= maxIter) maxIter = c;
     }
     
-    position -= direction;      // highest count position was just passed
+    position -= direction/2;   // highest count position was just passed. move back so highest point is ahead of us
     
-    for(;;) {
+    for(;;) { // binary sea
         if(++jog > 10) break;
         
         direction /= 2;
@@ -133,7 +133,7 @@ float3 lerp(float3 a, float3 b, float w) { return a + w * (b-a); }
 float3 hsv2rgb(float3 c) {
     c.x *= 0.5;
     return lerp(saturate((abs(fract(c.x + float3(1,2,3)/3) * 6 - 3) - 1)),  1,c.y) * c.z;
-//harry    return lerp(saturate((abs(fract(c.x + float3(2,2.1,2.1)/3) * 6 - 3) - 1)), 2,c.y) * c.z / 2;
+    // return lerp(saturate((abs(fract(c.x + float3(2,2.1,2.1)/3) * 6 - 3) - 1)), 2,c.y) * c.z / 2;
 }
 
 kernel void rayMarchShader

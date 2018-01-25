@@ -14,7 +14,6 @@
 		1D14906A1F9FA199004B538F /* Shaders.metal in Sources */ = {isa = PBXBuildFile; fileRef = 1D1490691F9FA199004B538F /* Shaders.metal */; };
 		1D14906F1F9FA199004B538F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1D14906E1F9FA199004B538F /* Assets.xcassets */; };
 		1DE0832D20169FD90009A3F2 /* SliderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DE0832C20169FD90009A3F2 /* SliderView.swift */; };
-		1DE083352016BCB40009A3F2 /* ShaderCode.txt in Resources */ = {isa = PBXBuildFile; fileRef = 1DE083342016BCB40009A3F2 /* ShaderCode.txt */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -28,7 +27,6 @@
 		1D14906E1F9FA199004B538F /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		1D1490731F9FA199004B538F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		1DE0832C20169FD90009A3F2 /* SliderView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SliderView.swift; sourceTree = "<group>"; };
-		1DE083342016BCB40009A3F2 /* ShaderCode.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = ShaderCode.txt; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -70,7 +68,6 @@
 				1D1490621F9FA199004B538F /* AppDelegate.swift */,
 				1D14906E1F9FA199004B538F /* Assets.xcassets */,
 				1D1490731F9FA199004B538F /* Info.plist */,
-				1DE083342016BCB40009A3F2 /* ShaderCode.txt */,
 				1D1490601F9FA199004B538F /* Products */,
 			);
 			path = Source;
@@ -137,7 +134,6 @@
 			files = (
 				1D03B1FE2017119A003F0597 /* Main.storyboard in Resources */,
 				1D14906F1F9FA199004B538F /* Assets.xcassets in Resources */,
-				1DE083352016BCB40009A3F2 /* ShaderCode.txt in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

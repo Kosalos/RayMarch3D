@@ -1,11 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" colorMatched="YES" initialViewController="BV1-FR-VrT">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" colorMatched="YES" initialViewController="BV1-FR-VrT">
     <device id="ipad10_5" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -13,19 +14,25 @@
         <scene sceneID="tXr-a1-R10">
             <objects>
                 <viewController id="BV1-FR-VrT" customClass="ViewController" customModule="RayMarch3D" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" misplaced="YES" insetsLayoutMarginsFromSafeArea="NO" id="3se-qz-xqx">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="Atg-ry-fnb"/>
+                        <viewControllerLayoutGuide type="bottom" id="vHI-nA-MU4"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="3se-qz-xqx">
                         <rect key="frame" x="0.0" y="0.0" width="1024" height="1360"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <view contentMode="scaleToFill" horizontalCompressionResistancePriority="250" verticalCompressionResistancePriority="250" misplaced="YES" insetsLayoutMarginsFromSafeArea="NO" id="SKK-Rp-etB" customClass="UIImageView">
+                            <view contentMode="scaleToFill" horizontalCompressionResistancePriority="250" verticalCompressionResistancePriority="250" insetsLayoutMarginsFromSafeArea="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SKK-Rp-etB" customClass="UIImageView">
                                 <rect key="frame" x="10" y="262" width="500" height="425"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <gestureRecognizers/>
                             </view>
-                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="yfK-it-LnG">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="yfK-it-LnG">
                                 <rect key="frame" x="939" y="1264" width="78" height="37"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="78" id="ghh-WG-wTh"/>
+                                    <constraint firstAttribute="height" constant="37" id="lZL-Ld-fWz"/>
+                                </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                 <state key="normal" title="Reset">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -34,55 +41,92 @@
                                     <action selector="resetButtonPressed:" destination="BV1-FR-VrT" eventType="touchUpInside" id="Pra-dd-cje"/>
                                 </connections>
                             </button>
-                            <view contentMode="scaleToFill" misplaced="YES" id="mbr-lr-R6E" customClass="SliderView" customModule="RayMarch3D" customModuleProvider="target">
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="mbr-lr-R6E" customClass="SliderView" customModule="RayMarch3D" customModuleProvider="target">
                                 <rect key="frame" x="156" y="1250" width="200" height="35"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             </view>
-                            <view contentMode="scaleToFill" misplaced="YES" id="WHx-CV-VTD" customClass="SliderView" customModule="RayMarch3D" customModuleProvider="target">
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="WHx-CV-VTD" customClass="SliderView" customModule="RayMarch3D" customModuleProvider="target">
                                 <rect key="frame" x="383" y="1250" width="200" height="35"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             </view>
-                            <view tag="1" contentMode="scaleToFill" misplaced="YES" id="w8E-Ja-2IA" customClass="SliderView" customModule="RayMarch3D" customModuleProvider="target">
+                            <view tag="1" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="w8E-Ja-2IA" customClass="SliderView" customModule="RayMarch3D" customModuleProvider="target">
                                 <rect key="frame" x="634" y="1034" width="200" height="35"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             </view>
-                            <view tag="2" contentMode="scaleToFill" misplaced="YES" id="JhW-Jc-IEF" customClass="SliderView" customModule="RayMarch3D" customModuleProvider="target">
+                            <view tag="2" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="JhW-Jc-IEF" customClass="SliderView" customModule="RayMarch3D" customModuleProvider="target">
                                 <rect key="frame" x="634" y="1090" width="200" height="35"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             </view>
-                            <view contentMode="scaleToFill" misplaced="YES" id="yAn-GH-5pb" customClass="DeltaView" customModule="RayMarch3D" customModuleProvider="target">
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="yAn-GH-5pb" customClass="DeltaView" customModule="RayMarch3D" customModuleProvider="target">
                                 <rect key="frame" x="156" y="1034" width="200" height="200"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             </view>
-                            <view contentMode="scaleToFill" misplaced="YES" id="ID0-oF-IlA" customClass="DeltaView" customModule="RayMarch3D" customModuleProvider="target">
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ID0-oF-IlA" customClass="DeltaView" customModule="RayMarch3D" customModuleProvider="target">
                                 <rect key="frame" x="383" y="1034" width="200" height="200"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             </view>
-                            <view contentMode="scaleToFill" misplaced="YES" id="nlX-sY-jg1" customClass="SliderView" customModule="RayMarch3D" customModuleProvider="target">
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="nlX-sY-jg1" customClass="SliderView" customModule="RayMarch3D" customModuleProvider="target">
                                 <rect key="frame" x="634" y="1171" width="200" height="35"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             </view>
-                            <view contentMode="scaleToFill" misplaced="YES" id="Pvk-9B-sIH" customClass="SliderView" customModule="RayMarch3D" customModuleProvider="target">
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Pvk-9B-sIH" customClass="SliderView" customModule="RayMarch3D" customModuleProvider="target">
                                 <rect key="frame" x="634" y="1250" width="200" height="35"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             </view>
-                            <view contentMode="scaleToFill" horizontalCompressionResistancePriority="250" verticalCompressionResistancePriority="250" misplaced="YES" insetsLayoutMarginsFromSafeArea="NO" id="yRj-iz-7z3" customClass="UIImageView">
+                            <view contentMode="scaleToFill" horizontalCompressionResistancePriority="250" verticalCompressionResistancePriority="250" insetsLayoutMarginsFromSafeArea="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yRj-iz-7z3" customClass="UIImageView">
                                 <rect key="frame" x="517" y="262" width="500" height="425"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <gestureRecognizers/>
                             </view>
                         </subviews>
                         <color key="backgroundColor" red="0.026657605508461555" green="0.077108541822286741" blue="0.15452622898527923" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                         <gestureRecognizers/>
+                        <constraints>
+                            <constraint firstItem="mbr-lr-R6E" firstAttribute="top" secondItem="yAn-GH-5pb" secondAttribute="bottom" constant="16" id="0kO-we-q8L"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="yRj-iz-7z3" secondAttribute="trailing" constant="-13" id="19C-0A-dXo"/>
+                            <constraint firstItem="nlX-sY-jg1" firstAttribute="top" secondItem="JhW-Jc-IEF" secondAttribute="bottom" constant="46" id="3Fz-uV-b9t"/>
+                            <constraint firstItem="vHI-nA-MU4" firstAttribute="top" secondItem="mbr-lr-R6E" secondAttribute="bottom" constant="75" id="3GC-zw-Am5"/>
+                            <constraint firstItem="ID0-oF-IlA" firstAttribute="leading" secondItem="3se-qz-xqx" secondAttribute="leading" constant="383" id="5cA-xr-wb9"/>
+                            <constraint firstItem="WHx-CV-VTD" firstAttribute="bottom" secondItem="Pvk-9B-sIH" secondAttribute="bottom" id="5xc-bI-Q4b"/>
+                            <constraint firstItem="nlX-sY-jg1" firstAttribute="leading" secondItem="Pvk-9B-sIH" secondAttribute="leading" id="71c-eB-kex"/>
+                            <constraint firstItem="mbr-lr-R6E" firstAttribute="top" secondItem="3se-qz-xqx" secondAttribute="top" constant="1250" id="9tS-nP-Gw8"/>
+                            <constraint firstItem="yAn-GH-5pb" firstAttribute="leading" secondItem="mbr-lr-R6E" secondAttribute="leading" id="AUn-3Y-7Vb"/>
+                            <constraint firstItem="nlX-sY-jg1" firstAttribute="top" secondItem="3se-qz-xqx" secondAttribute="top" constant="1171" id="Ayz-eh-XqN"/>
+                            <constraint firstItem="WHx-CV-VTD" firstAttribute="top" secondItem="Pvk-9B-sIH" secondAttribute="top" id="Ene-v5-MCm"/>
+                            <constraint firstItem="yAn-GH-5pb" firstAttribute="top" secondItem="3se-qz-xqx" secondAttribute="top" constant="1034" id="FpF-w6-WEx"/>
+                            <constraint firstAttribute="trailing" secondItem="w8E-Ja-2IA" secondAttribute="trailing" constant="190" id="GAS-tl-uIm"/>
+                            <constraint firstItem="w8E-Ja-2IA" firstAttribute="leading" secondItem="JhW-Jc-IEF" secondAttribute="leading" id="Gbg-d6-L8Y"/>
+                            <constraint firstItem="ID0-oF-IlA" firstAttribute="trailing" secondItem="WHx-CV-VTD" secondAttribute="trailing" id="H7M-dP-gDa"/>
+                            <constraint firstItem="JhW-Jc-IEF" firstAttribute="trailing" secondItem="nlX-sY-jg1" secondAttribute="trailing" id="HJr-me-3Mi"/>
+                            <constraint firstItem="vHI-nA-MU4" firstAttribute="top" secondItem="yfK-it-LnG" secondAttribute="bottom" constant="59" id="ISv-BZ-5ee"/>
+                            <constraint firstItem="yfK-it-LnG" firstAttribute="trailing" secondItem="yRj-iz-7z3" secondAttribute="trailing" id="Jpe-Yt-j9j"/>
+                            <constraint firstItem="ID0-oF-IlA" firstAttribute="top" secondItem="SKK-Rp-etB" secondAttribute="bottom" constant="347" id="MH8-4U-Soc"/>
+                            <constraint firstItem="ID0-oF-IlA" firstAttribute="leading" secondItem="yAn-GH-5pb" secondAttribute="trailing" constant="27" id="OSY-jS-uUc"/>
+                            <constraint firstItem="SKK-Rp-etB" firstAttribute="top" secondItem="Atg-ry-fnb" secondAttribute="bottom" constant="242" id="PPi-Ph-6bC"/>
+                            <constraint firstItem="yAn-GH-5pb" firstAttribute="top" secondItem="SKK-Rp-etB" secondAttribute="bottom" constant="347" id="QFL-7H-qeb"/>
+                            <constraint firstItem="yRj-iz-7z3" firstAttribute="leading" secondItem="SKK-Rp-etB" secondAttribute="trailing" constant="7" id="T4p-bW-NfW"/>
+                            <constraint firstItem="JhW-Jc-IEF" firstAttribute="leading" secondItem="nlX-sY-jg1" secondAttribute="leading" id="VQN-fU-BaS"/>
+                            <constraint firstItem="w8E-Ja-2IA" firstAttribute="trailing" secondItem="JhW-Jc-IEF" secondAttribute="trailing" id="XWL-aq-KOk"/>
+                            <constraint firstItem="nlX-sY-jg1" firstAttribute="trailing" secondItem="Pvk-9B-sIH" secondAttribute="trailing" id="YMd-JO-DTJ"/>
+                            <constraint firstItem="yRj-iz-7z3" firstAttribute="leading" secondItem="3se-qz-xqx" secondAttribute="leading" constant="517" id="ZJB-PD-8jT"/>
+                            <constraint firstItem="JhW-Jc-IEF" firstAttribute="top" secondItem="w8E-Ja-2IA" secondAttribute="bottom" constant="21" id="bZv-cQ-YBf"/>
+                            <constraint firstItem="SKK-Rp-etB" firstAttribute="bottom" secondItem="yRj-iz-7z3" secondAttribute="bottom" id="ceV-5o-5ZC"/>
+                            <constraint firstItem="yAn-GH-5pb" firstAttribute="trailing" secondItem="mbr-lr-R6E" secondAttribute="trailing" id="dGe-p5-3ab"/>
+                            <constraint firstItem="mbr-lr-R6E" firstAttribute="bottom" secondItem="WHx-CV-VTD" secondAttribute="bottom" id="drK-4m-Gcd"/>
+                            <constraint firstItem="w8E-Ja-2IA" firstAttribute="leading" secondItem="3se-qz-xqx" secondAttribute="leading" constant="634" id="e2F-6Q-us7"/>
+                            <constraint firstItem="SKK-Rp-etB" firstAttribute="leading" secondItem="3se-qz-xqx" secondAttribute="leadingMargin" constant="-10" id="fZ7-D1-POd"/>
+                            <constraint firstItem="ID0-oF-IlA" firstAttribute="leading" secondItem="WHx-CV-VTD" secondAttribute="leading" id="fbX-Ht-NLv"/>
+                            <constraint firstItem="JhW-Jc-IEF" firstAttribute="top" secondItem="3se-qz-xqx" secondAttribute="top" constant="1090" id="jne-Ku-Y3W"/>
+                            <constraint firstItem="SKK-Rp-etB" firstAttribute="top" secondItem="yRj-iz-7z3" secondAttribute="top" id="lk5-CZ-BNH"/>
+                            <constraint firstItem="yAn-GH-5pb" firstAttribute="top" secondItem="ID0-oF-IlA" secondAttribute="top" id="nRY-t2-7Ru"/>
+                            <constraint firstItem="w8E-Ja-2IA" firstAttribute="leading" secondItem="ID0-oF-IlA" secondAttribute="trailing" constant="51" id="nd3-Dv-pVh"/>
+                            <constraint firstAttribute="bottom" secondItem="SKK-Rp-etB" secondAttribute="bottom" constant="673" id="psm-R2-VE2"/>
+                            <constraint firstItem="yAn-GH-5pb" firstAttribute="bottom" secondItem="ID0-oF-IlA" secondAttribute="bottom" id="tEC-9I-7cE"/>
+                            <constraint firstItem="mbr-lr-R6E" firstAttribute="top" secondItem="WHx-CV-VTD" secondAttribute="top" id="wD7-MN-JsF"/>
+                            <constraint firstItem="yAn-GH-5pb" firstAttribute="leading" secondItem="3se-qz-xqx" secondAttribute="leading" constant="156" id="x8v-XP-PSZ"/>
+                            <constraint firstItem="ID0-oF-IlA" firstAttribute="top" secondItem="w8E-Ja-2IA" secondAttribute="top" id="yiq-Ul-M0s"/>
+                            <constraint firstItem="Pvk-9B-sIH" firstAttribute="top" secondItem="nlX-sY-jg1" secondAttribute="bottom" constant="44" id="yiw-rO-6bt"/>
+                        </constraints>
                         <connections>
                             <outletCollection property="gestureRecognizers" destination="VJ7-kn-OoK" appends="YES" id="AiY-IF-edq"/>
                         </connections>
@@ -109,7 +153,7 @@
                     </connections>
                 </pinchGestureRecognizer>
             </objects>
-            <point key="canvasLocation" x="-1443" y="-451"/>
+            <point key="canvasLocation" x="-1713" y="-454"/>
         </scene>
     </scenes>
 </document>
