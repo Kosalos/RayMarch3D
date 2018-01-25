@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" colorMatched="YES" initialViewController="BV1-FR-VrT">
+    <device id="ipad10_5" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--View Controller-->
+        <scene sceneID="tXr-a1-R10">
+            <objects>
+                <viewController id="BV1-FR-VrT" customClass="ViewController" customModule="RayMarch3D" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" misplaced="YES" insetsLayoutMarginsFromSafeArea="NO" id="3se-qz-xqx">
+                        <rect key="frame" x="0.0" y="0.0" width="1024" height="1360"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" horizontalCompressionResistancePriority="250" verticalCompressionResistancePriority="250" misplaced="YES" insetsLayoutMarginsFromSafeArea="NO" id="SKK-Rp-etB" customClass="UIImageView">
+                                <rect key="frame" x="10" y="262" width="500" height="425"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <gestureRecognizers/>
+                            </view>
+                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="yfK-it-LnG">
+                                <rect key="frame" x="939" y="1264" width="78" height="37"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                <state key="normal" title="Reset">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="resetButtonPressed:" destination="BV1-FR-VrT" eventType="touchUpInside" id="Pra-dd-cje"/>
+                                </connections>
+                            </button>
+                            <view contentMode="scaleToFill" misplaced="YES" id="mbr-lr-R6E" customClass="SliderView" customModule="RayMarch3D" customModuleProvider="target">
+                                <rect key="frame" x="156" y="1250" width="200" height="35"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            </view>
+                            <view contentMode="scaleToFill" misplaced="YES" id="WHx-CV-VTD" customClass="SliderView" customModule="RayMarch3D" customModuleProvider="target">
+                                <rect key="frame" x="383" y="1250" width="200" height="35"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            </view>
+                            <view tag="1" contentMode="scaleToFill" misplaced="YES" id="w8E-Ja-2IA" customClass="SliderView" customModule="RayMarch3D" customModuleProvider="target">
+                                <rect key="frame" x="634" y="1034" width="200" height="35"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            </view>
+                            <view tag="2" contentMode="scaleToFill" misplaced="YES" id="JhW-Jc-IEF" customClass="SliderView" customModule="RayMarch3D" customModuleProvider="target">
+                                <rect key="frame" x="634" y="1090" width="200" height="35"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            </view>
+                            <view contentMode="scaleToFill" misplaced="YES" id="yAn-GH-5pb" customClass="DeltaView" customModule="RayMarch3D" customModuleProvider="target">
+                                <rect key="frame" x="156" y="1034" width="200" height="200"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            </view>
+                            <view contentMode="scaleToFill" misplaced="YES" id="ID0-oF-IlA" customClass="DeltaView" customModule="RayMarch3D" customModuleProvider="target">
+                                <rect key="frame" x="383" y="1034" width="200" height="200"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            </view>
+                            <view contentMode="scaleToFill" misplaced="YES" id="nlX-sY-jg1" customClass="SliderView" customModule="RayMarch3D" customModuleProvider="target">
+                                <rect key="frame" x="634" y="1171" width="200" height="35"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            </view>
+                            <view contentMode="scaleToFill" misplaced="YES" id="Pvk-9B-sIH" customClass="SliderView" customModule="RayMarch3D" customModuleProvider="target">
+                                <rect key="frame" x="634" y="1250" width="200" height="35"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            </view>
+                            <view contentMode="scaleToFill" horizontalCompressionResistancePriority="250" verticalCompressionResistancePriority="250" misplaced="YES" insetsLayoutMarginsFromSafeArea="NO" id="yRj-iz-7z3" customClass="UIImageView">
+                                <rect key="frame" x="517" y="262" width="500" height="425"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <gestureRecognizers/>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" red="0.026657605508461555" green="0.077108541822286741" blue="0.15452622898527923" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                        <gestureRecognizers/>
+                        <connections>
+                            <outletCollection property="gestureRecognizers" destination="VJ7-kn-OoK" appends="YES" id="AiY-IF-edq"/>
+                        </connections>
+                    </view>
+                    <size key="freeformSize" width="1024" height="1360"/>
+                    <connections>
+                        <outlet property="cameraXY" destination="yAn-GH-5pb" id="lxu-yy-B7x"/>
+                        <outlet property="cameraZ" destination="mbr-lr-R6E" id="4Gv-bg-hym"/>
+                        <outlet property="focusXY" destination="ID0-oF-IlA" id="T5r-6H-I9p"/>
+                        <outlet property="focusZ" destination="WHx-CV-VTD" id="p9v-qT-PjR"/>
+                        <outlet property="imageViewL" destination="SKK-Rp-etB" id="UPu-f4-Ztd"/>
+                        <outlet property="imageViewR" destination="yRj-iz-7z3" id="tCq-tG-tOA"/>
+                        <outlet property="iterMin" destination="w8E-Ja-2IA" id="Aya-Q5-Ro7"/>
+                        <outlet property="iterWidth" destination="JhW-Jc-IEF" id="cRp-er-vQp"/>
+                        <outlet property="power" destination="Pvk-9B-sIH" id="cEB-7L-ZcV"/>
+                        <outlet property="zoom" destination="nlX-sY-jg1" id="e0p-Aq-MP4"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="SZV-WD-TEh" sceneMemberID="firstResponder"/>
+                <pinchGestureRecognizer id="VJ7-kn-OoK">
+                    <connections>
+                        <action selector="pinchGesture:" destination="BV1-FR-VrT" id="ouK-DY-4sc"/>
+                        <outlet property="delegate" destination="SKK-Rp-etB" id="kqU-ye-3WE"/>
+                    </connections>
+                </pinchGestureRecognizer>
+            </objects>
+            <point key="canvasLocation" x="-1443" y="-451"/>
+        </scene>
+    </scenes>
+</document>
