@@ -14,18 +14,27 @@ struct Control {
     vector_float3 camera;
     vector_float3 focus;
     vector_float3 light;
-    
-    float cameraX,cameraY,cameraZ;  // sliderView,deltaView cannot handle float3, so these are substitutes
-    float focusX,focusY,focusZ;
-    
+    vector_float3 hsv;
+
     int size;
+    int formula;
     int bailout;
     float power;
     float zoom;
     int iterMin;
     int iterMax;
     int iterWidth;
-    float hop;
+    
+    float fLimit;   // mandelBox
+    float fValue;
+    float mRadius;
+    float fRadius;
+    float scale;
+    float cutoff;
+    
+    float cameraX,cameraY,cameraZ;
+    float focusX,focusY,focusZ;
+    float hsvX,hsvY,hsvZ;
 };
 
 #endif /* ShaderTypes_h */

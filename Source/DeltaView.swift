@@ -23,9 +23,9 @@ class DeltaView: UIView {
         setNeedsDisplay()
     }
     
-    func initializeFloat1(_ vx: inout Float,  _ min:Float, _ max:Float,  _ delta:Float, _ iname:String) {
-        let valueAddressX = address(of:&vx)
-        valuePointerX = UnsafeMutableRawPointer(bitPattern:valueAddressX)!
+    func initializeFloat1(_ v: inout Float,  _ min:Float, _ max:Float,  _ delta:Float, _ iname:String) {
+        let addr = address(of:&v)
+        valuePointerX = UnsafeMutableRawPointer(bitPattern:addr)!
         
         mRange.x = min
         mRange.y = max
@@ -35,9 +35,9 @@ class DeltaView: UIView {
         scenter = swidth / 2
     }
     
-    func initializeFloat2(_ vy: inout Float) {
-        let valueAddressY = address(of:&vy)
-        valuePointerY = UnsafeMutableRawPointer(bitPattern:valueAddressY)!
+    func initializeFloat2(_ v: inout Float) {
+        let addr = address(of:&v)
+        valuePointerY = UnsafeMutableRawPointer(bitPattern:addr)!
         setNeedsDisplay()
     }
     
@@ -126,6 +126,7 @@ class DeltaView: UIView {
     
     var deltaX:Float = 0
     var deltaY:Float = 0
+    var deltaZ:Float = 0
     var touched = false
     
     //MARK: ==================================
@@ -135,28 +136,37 @@ class DeltaView: UIView {
         
         var valueX = valuePointerX.load(as: Float.self)
         var valueY = valuePointerY.load(as: Float.self)
-        
+
         valueX = fClamp2(valueX + deltaX * deltaValue, mRange)
         valueY = fClamp2(valueY + deltaY * deltaValue, mRange)
-        
+
         valuePointerX.storeBytes(of:valueX, as:Float.self)
         valuePointerY.storeBytes(of:valueY, as:Float.self)
-        
+
         setNeedsDisplay()
         return true
     }
     
     //MARK: ==================================
     
+    var numberTouches:Int = 0
+    
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         if !active { return }
         if valuePointerX == nil { return }
         
+        if touches.count > numberTouches { numberTouches = touches.count }
+        
         for t in touches {
             let pt = t.location(in: self)
-            
-            deltaX = (Float(pt.x) - scenter) / swidth / 10
-            deltaY = (Float(pt.y) - scenter) / swidth / 10
+
+            if numberTouches == 1 {
+                deltaX = (Float(pt.x) - scenter) / swidth / 10
+                deltaY = -(Float(pt.y) - scenter) / swidth / 10
+            }
+            else {
+                deltaZ = (Float(pt.y) - scenter) / swidth / 10
+            }
             touched = true
             setNeedsDisplay()
         }
@@ -164,7 +174,11 @@ class DeltaView: UIView {
     
     override func touchesMoved(_ touches: Set<UITouch>, with event: UIEvent?) { touchesBegan(touches, with:event) }
     
-    override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) { touched = false }
+    override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
+        touched = false
+        numberTouches = 0
+        deltaZ = 0
+    }
     
     func drawLine(_ p1:CGPoint, _ p2:CGPoint) {
         context?.beginPath()

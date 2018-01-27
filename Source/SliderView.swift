@@ -1,7 +1,7 @@
 import UIKit
 
 enum ValueType { case int32,float }
-enum SliderType { case delta,direct }
+enum SliderType { case delta,direct,loop }
 
 class SliderView: UIView {
     var context : CGContext?
@@ -140,7 +140,14 @@ class SliderView: UIView {
         case .float : value = valuePointer.load(as: Float.self)
         }
 
-        value = fClamp2(value + delta * deltaValue, mRange)
+        if slidertype == .loop {
+            value += delta * deltaValue
+            if value < mRange.x { value += (mRange.y - mRange.x) } else
+                if value > mRange.y { value -= (mRange.y - mRange.x) }
+        }
+        else {
+            value = fClamp2(value + delta * deltaValue, mRange)
+        }
         
         switch valuetype {
         case .int32 : valuePointer.storeBytes(of:Int32(value), as:Int32.self)

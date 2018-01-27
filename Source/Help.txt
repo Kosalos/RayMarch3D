@@ -1,0 +1,187 @@
+Image is rendered twice, for 'cross-eyed' 3D viewing.
+With the iPad held two feet away, slightly cross your eyes so that there is a third image in the middle.
+Relax your gaze, and concentrate only on that middle image, which is in 3D.
+
+You can  pinch the images to zoom in/out, and slide finger to move camera XY position.  
+
+A.  Slide finger to alter X,Y coordinates of camera.
+    Slide two fingers to alter Z coordinate.
+    Press to either side of center of control box to specify direction and speed.
+B.  Slide finger to alter Z coordinate of camera.
+C.  Slide finger(s) to alter coordinate of focus point of camera.
+D.  Slide finger to alter color palette.
+E.  Select Equation. 1..5 are MandelBulb variations, 'Box' is MandelBox.
+F.  Select the range of data that is rendered.
+    Larger withs produces more detail, but is slower to render.
+G.  Zoom the camera in and out.
+H.  This collection of controls are only for MandelBox. You'll have to experiment...
+I.  The camera/focus system is hard to control. Click this button to get back to a sane view.
+    Suggest you start a session by moving forward via the CameraZ slider.
+J.  Toggles whether the program automatically rolls the camera position around a little.
+K.  Reset just the color palette.
+L.  Save/Load dialog.
+M.  Manage Recorder.
+    1. Position camera, select Zoom and power, then press "Start Recording".
+    2. Change to new position, zoom and power and then press "Start Playing".
+    Progam will begin cycling between the two recording entries back and forth.
+    3. Press "Stop Playing" to stop recording mode. 
+
+https://github.com/jtauber/mandelbulb/blob/master/mandel8.py
+
+-----------------------------------------------------------------
+MandekBub, MandelBox algorithms
+-----------------------------------------------------------------
+
+int escapeCount(float3 w, Control control) {
+    int iter = 0;
+
+    // 0 Bulb 1 -------------------------------------------------
+    if (control.formula == 0) {
+        float r,theta,phi,pwr,ss,dist;
+
+        for(;;) {
+            if(++iter == control.iterMax) return 0; // 'in' the set
+
+            r = length(w);
+            theta = atan2(sqrt(w.x * w.x + w.y * w.y), w.z);
+            phi = atan2(w.y,w.x);
+            pwr = pow(r,control.power);
+            ss = sin(theta * control.power);
+
+            w.x += pwr * ss * cos(phi * control.power);
+            w.y += pwr * ss * sin(phi * control.power);
+            w.z += pwr * cos(theta * control.power);
+
+            dist = length(w);
+            if(dist > 4) return iter;
+        }
+    }
+
+    // 1 Bulb 2 -------------------------------------------------
+    if (control.formula == 1) {
+        float m = dot(w,w);
+        float dz = 1.0;
+
+        for(;;) {
+            if(++iter == control.iterMax) return 0; // 'in' the set
+
+            float m2 = m*m;
+            float m4 = m2*m2;
+            dz = 8.0 * sqrt(m4 * m2 * m) * dz + 1.0;
+
+            float x = w.x; float x2 = x*x; float x4 = x2*x2;
+            float y = w.y; float y2 = y*y; float y4 = y2*y2;
+            float z = w.z; float z2 = z*z; float z4 = z2*z2;
+            float k3 = x2 + z2;
+            float k2s = sqrt(pow(k3,control.power));
+            float k2 = 1;  if(k2s != 0) k2 = 1.0 / k2s;
+            float k1 = x4 + y4 + z4 - 6.0 * y2 * z2 - 6.0 * x2 * y2 + 2.0 * z2 * x2;
+            float k4 = x2 - y2 + z2;
+
+            w.x +=  64.0 * x * y * z * (x2-z2) * k4 * (x4 - 6.0 * x2 * z2 + z4) * k1 * k2;
+            w.y +=  -16.0 * y2 * k3 * k4 * k4 + k1 * k1;
+            w.z +=  -8.0 * y * k4 * (x4 * x4 - 28.0 * x4 * x2 * z2 + 70.0 * x4 * z4 - 28.0 * x2 * z2 * z4 + z4 * z4) * k1 * k2;
+
+            m = dot(w,w);
+            if( m > 4.0 ) return iter;
+        }
+    }
+
+    // 2 Bulb 3 -------------------------------------------------
+    if (control.formula == 2) {
+        float magnitude, r, theta_power, r_power, phi, phi_cos, xxyy;
+
+        for(;;) {
+            if(++iter == control.iterMax) return 0; // 'in' the set
+
+            xxyy = w.x * w.x + w.y * w.y;
+            magnitude = xxyy + w.z * w.z;
+            r = sqrt(magnitude);
+            if(r > 8) return iter;
+
+            theta_power = atan2(w.y,w.x) * control.power;
+            r_power = pow(r,control.power);
+
+            phi = asin(w.z / r);
+            phi_cos = cos(phi * control.power);
+            w.x += r_power * cos(theta_power) * phi_cos;
+            w.y += r_power * sin(theta_power) * phi_cos;
+            w.z += r_power * sin(phi * control.power);
+        }
+    }
+
+    // 3 Bulb 4 -------------------------------------------------
+    if (control.formula == 3) {
+        float magnitude, r, theta_power, r_power, phi, phi_sin, xxyy;
+
+        for(;;) {
+            if(++iter == control.iterMax) return 0; // 'in' the set
+
+            xxyy = w.x * w.x + w.y * w.y;
+            magnitude = xxyy + w.z * w.z;
+            r = sqrt(magnitude);
+            if(r > 8) return iter;
+
+            theta_power = atan2(w.y,w.x) * control.power;
+            r_power = pow(r,control.power);
+
+            phi = atan2(sqrt(xxyy), w.z);
+            phi_sin = sin(phi * control.power);
+            w.x += r_power * cos(theta_power) * phi_sin;
+            w.y += r_power * sin(theta_power) * phi_sin;
+            w.z += r_power * cos(phi * control.power);
+        }
+    }
+
+    // 4 Bulb 5 -------------------------------------------------
+    if (control.formula == 4) {
+        float magnitude, r, theta_power, r_power, phi, phi_cos, xxyy;
+
+        for(;;) {
+            if(++iter == control.iterMax) return 0; // 'in' the set
+
+            xxyy = w.x * w.x + w.y * w.y;
+            magnitude = xxyy + w.z * w.z;
+            r = sqrt(magnitude);
+            if(r > 8) return iter;
+
+            theta_power = atan2(w.y,w.x) * control.power;
+            r_power = pow(r,control.power);
+
+            phi = acos(w.z / r);
+            phi_cos = cos(phi * control.power);
+            w.x += r_power * cos(theta_power) * phi_cos;
+            w.y += r_power * sin(theta_power) * phi_cos;
+            w.z += r_power * sin(phi*control.power);
+        }
+    }
+
+    // 5 Box ----------------------------------------------------
+    if (control.formula == 5) {
+        float r;
+        float mr2 = control.mRadius * control.mRadius;
+        float fr2 = control.fRadius * control.fRadius;
+        float ffmm = fr2 / mr2;
+
+        for(;;) {
+            if(++iter == control.iterMax) return 0; // 'in' the set
+
+            if(w.x > control.fLimit) w.x = control.fValue - w.x; else if(w.x < -control.fLimit) w.x = -control.fValue - w.x;
+            if(w.y > control.fLimit) w.y = control.fValue - w.y; else if(w.y < -control.fLimit) w.y = -control.fValue - w.y;
+            if(w.z > control.fLimit) w.z = control.fValue - w.z; else if(w.z < -control.fLimit) w.z = -control.fValue - w.z;
+
+            r = length(w);
+            if(r > control.cutoff) return iter;
+
+            if(r < mr2) {
+                w *= ffmm * control.scale;
+            }
+            else
+                if(r < fr2) {
+                    w *= fr2 * control.scale / r;
+            }
+        }
+    }
+
+    return 0;
+}

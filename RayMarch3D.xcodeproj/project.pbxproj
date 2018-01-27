@@ -13,7 +13,10 @@
 		1D1490681F9FA199004B538F /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D1490671F9FA199004B538F /* ViewController.swift */; };
 		1D14906A1F9FA199004B538F /* Shaders.metal in Sources */ = {isa = PBXBuildFile; fileRef = 1D1490691F9FA199004B538F /* Shaders.metal */; };
 		1D14906F1F9FA199004B538F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1D14906E1F9FA199004B538F /* Assets.xcassets */; };
+		1DC61358201B872A0029782E /* HelpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DC61357201B872A0029782E /* HelpViewController.swift */; };
+		1DC6135A201B873C0029782E /* Help.txt in Resources */ = {isa = PBXBuildFile; fileRef = 1DC61359201B873B0029782E /* Help.txt */; };
 		1DE0832D20169FD90009A3F2 /* SliderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DE0832C20169FD90009A3F2 /* SliderView.swift */; };
+		1DF882A5201A9007002DE87A /* SaveLoadViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DF882A4201A9006002DE87A /* SaveLoadViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -26,7 +29,10 @@
 		1D1490691F9FA199004B538F /* Shaders.metal */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.metal; path = Shaders.metal; sourceTree = "<group>"; };
 		1D14906E1F9FA199004B538F /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		1D1490731F9FA199004B538F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		1DC61357201B872A0029782E /* HelpViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HelpViewController.swift; sourceTree = "<group>"; };
+		1DC61359201B873B0029782E /* Help.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Help.txt; sourceTree = "<group>"; };
 		1DE0832C20169FD90009A3F2 /* SliderView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SliderView.swift; sourceTree = "<group>"; };
+		1DF882A4201A9006002DE87A /* SaveLoadViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SaveLoadViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -64,9 +70,12 @@
 				1D1490671F9FA199004B538F /* ViewController.swift */,
 				1DE0832C20169FD90009A3F2 /* SliderView.swift */,
 				1D03B1FF20172BC1003F0597 /* DeltaView.swift */,
+				1DF882A4201A9006002DE87A /* SaveLoadViewController.swift */,
+				1DC61357201B872A0029782E /* HelpViewController.swift */,
 				1D03B1FD2017119A003F0597 /* Main.storyboard */,
 				1D1490621F9FA199004B538F /* AppDelegate.swift */,
 				1D14906E1F9FA199004B538F /* Assets.xcassets */,
+				1DC61359201B873B0029782E /* Help.txt */,
 				1D1490731F9FA199004B538F /* Info.plist */,
 				1D1490601F9FA199004B538F /* Products */,
 			);
@@ -134,6 +143,7 @@
 			files = (
 				1D03B1FE2017119A003F0597 /* Main.storyboard in Resources */,
 				1D14906F1F9FA199004B538F /* Assets.xcassets in Resources */,
+				1DC6135A201B873C0029782E /* Help.txt in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -146,6 +156,8 @@
 			files = (
 				1D03B20020172BC1003F0597 /* DeltaView.swift in Sources */,
 				1D14906A1F9FA199004B538F /* Shaders.metal in Sources */,
+				1DF882A5201A9007002DE87A /* SaveLoadViewController.swift in Sources */,
+				1DC61358201B872A0029782E /* HelpViewController.swift in Sources */,
 				1D1490681F9FA199004B538F /* ViewController.swift in Sources */,
 				1DE0832D20169FD90009A3F2 /* SliderView.swift in Sources */,
 				1D1490631F9FA199004B538F /* AppDelegate.swift in Sources */,
