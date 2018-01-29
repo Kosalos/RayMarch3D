@@ -2,17 +2,17 @@ Image is rendered twice, for 'cross-eyed' 3D viewing.
 With the iPad held two feet away, slightly cross your eyes so that there is a third image in the middle.
 Relax your gaze, and concentrate only on that middle image, which is in 3D.
 
-You can  pinch the images to zoom in/out, and slide finger to move camera XY position.
-If you have a lot of black in the image, try opening up the color range (iterMin lower, iterWidth higher)
+You can pinch the images to zoom in/out, and slide finger on the image to move camera XY position.
+If you have a lot of black in the image, try lowering the iterMin value.
 
 A.  Slide finger to alter X,Y coordinates of camera.
     Press to either side of center of control box to specify direction and speed.
 B.  Slide finger to alter Z coordinate of camera.
-C.  Slide finger(s) to alter coordinate of focus point of camera.
+C.  Slide finger to alter coordinates of focus point of camera.
 D.  Slide finger to alter color palette.
 E.  Select Equation. 1..5 are MandelBulb variations, 'Box' is MandelBox.
 F.  Select the range of data that is rendered.
-    Larger withs produces more detail, but is slower to render.
+    Larger widths produces more detail, but is slower to render.
 G.  Zoom the camera in and out.
 H.  This collection of controls are only for MandelBox. You'll have to experiment...
 I.  The camera/focus system is hard to control. Click this button to get back to a sane view.
@@ -24,7 +24,7 @@ M.  Manage Recorder.
     1. Position camera, select Zoom and power, then press "Start Recording".
     2. Change to new position, zoom and power and then press "Start Playing".
     Progam will begin cycling between the two recording entries back and forth.
-    3. Press "Stop Playing" to stop recording mode. 
+    3. Press "Stop Playing" to stop recording mode, as will tapping the image.
 
 https://github.com/jtauber/mandelbulb/blob/master/mandel8.py
 
