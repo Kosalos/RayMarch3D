@@ -68,17 +68,45 @@ class SliderView: UIView {
             return
         }
         
-        UIColor(red:0.2, green:0.2, blue:0.2, alpha: 1).set()
+        let limColor = UIColor(red:0.3, green:0.2, blue:0.2, alpha: 1)
+        let nrmColor = UIColor(red:0.2, green:0.2, blue:0.2, alpha: 1)
+
+        nrmColor.set()
         UIBezierPath(rect:bounds).fill()
         
-        // edge -------------------------------------------------
+        if isMinValue() {
+            limColor.set()
+            var r = bounds
+            r.size.width /= 2
+            UIBezierPath(rect:r).fill()
+        }
+        else if isMaxValue() { 
+            limColor.set()
+            var r = bounds
+            r.origin.x += bounds.width/2
+            r.size.width /= 2
+            UIBezierPath(rect:r).fill()
+        }
+        
+        // edge, cursor -------------------------------------------------
         let ctx = context!
-        let path = UIBezierPath(rect:bounds)
         ctx.saveGState()
         ctx.setStrokeColor(UIColor.black.cgColor)
-        ctx.setLineWidth(2)
+
+        let path = UIBezierPath(rect:bounds)
+        let x = valueRatio() * bounds.width
+        ctx.setLineWidth(4)
+        path.removeAllPoints()
+        path.move(to: CGPoint(x:x, y:0))
+        path.addLine(to: CGPoint(x:x, y:bounds.height))
         ctx.addPath(path.cgPath)
         ctx.strokePath()
+
+        let path2 = UIBezierPath(rect:bounds)
+        ctx.setLineWidth(2)
+        ctx.addPath(path2.cgPath)
+        ctx.strokePath()
+        
         ctx.restoreGState()
         
         // value ------------------------------------------
@@ -129,16 +157,45 @@ class SliderView: UIView {
     var touched = false
 
     //MARK: ==================================
-    
-    func update() -> Bool {
-        if valuePointer == nil || !active || !touched { return false }
 
+    func getValue() -> Float {
+        if valuePointer == nil { return 0 }
         var value:Float = 0
-            
+        
         switch valuetype {
         case .int32 : value = Float(valuePointer.load(as: Int32.self))
         case .float : value = valuePointer.load(as: Float.self)
         }
+
+        return value
+    }
+    
+    func isMinValue() -> Bool {
+        if valuePointer == nil { return false }
+        if slidertype == .loop { return false }
+
+        return getValue() == mRange.x
+    }
+    
+    func isMaxValue() -> Bool {
+        if valuePointer == nil { return false }
+        if slidertype == .loop { return false }
+        
+        return getValue() == mRange.y
+    }
+    
+    func valueRatio() -> CGFloat {
+        let den = mRange.y - mRange.x
+        if den == 0 { return CGFloat(0) }
+        return CGFloat((getValue() - mRange.x) / den )
+    }
+    
+    //MARK: ==================================
+    
+    func update() -> Bool {
+        if valuePointer == nil || !active || !touched { return false }
+
+        var value = getValue()
 
         if slidertype == .loop {
             value += delta * deltaValue

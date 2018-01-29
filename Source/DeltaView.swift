@@ -59,32 +59,61 @@ class DeltaView: UIView {
             UIBezierPath(rect:bounds).fill()
             return
         }
+
+        let limColor = UIColor(red:0.3, green:0.2, blue:0.2, alpha: 1)
+        let nrmColor = UIColor(red:0.2, green:0.2, blue:0.2, alpha: 1)
         
-        UIColor(red:0.2, green:0.2, blue:0.2, alpha: 1).set()
+        nrmColor.set()
         UIBezierPath(rect:bounds).fill()
         
-        // edge -------------------------------------------------
+        if isMinValue(0) {  // X coord
+            limColor.set()
+            var r = bounds
+            r.size.width /= 2
+            UIBezierPath(rect:r).fill()
+        }
+        else if isMaxValue(0) {
+            limColor.set()
+            var r = bounds
+            r.origin.x += bounds.width/2
+            r.size.width /= 2
+            UIBezierPath(rect:r).fill()
+        }
+        
+        if isMaxValue(1) {  // Y coord
+            limColor.set()
+            var r = bounds
+            r.size.height /= 2
+            UIBezierPath(rect:r).fill()
+        }
+        else if isMinValue(1) {
+            limColor.set()
+            var r = bounds
+            r.origin.y += bounds.width/2
+            r.size.height /= 2
+            UIBezierPath(rect:r).fill()
+        }
+
+        // edge, cursor -------------------------------------------------
         let ctx = context!
-        let path = UIBezierPath(rect:bounds)
         ctx.saveGState()
+        let path = UIBezierPath(rect:bounds)
         ctx.setStrokeColor(UIColor.black.cgColor)
         ctx.setLineWidth(2)
         ctx.addPath(path.cgPath)
         ctx.strokePath()
-        
+        ctx.restoreGState()
+
         UIColor.black.set()
         context?.setLineWidth(2)
         
-        if self.tag == 0 {   // cross hairs
-            drawVLine(CGFloat(scenter),0,bounds.height)
-            drawHLine(0,bounds.width,CGFloat(scenter))
-        }
-        
-        if self.tag == 1 { // iter diagonals
-            drawLine(CGPoint(x:CGFloat(scenter), y:0), CGPoint(x:0, y:bounds.height))
-            drawLine(CGPoint(x:CGFloat(scenter), y:0), CGPoint(x:bounds.width, y:bounds.height))
-        }
-        
+        drawVLine(CGFloat(scenter),0,bounds.height)
+        drawHLine(0,bounds.width,CGFloat(scenter))
+
+        let x = valueRatio(0) * bounds.width
+        let y = (CGFloat(1) - valueRatio(1)) * bounds.height
+        drawFilledCircle(CGPoint(x:x,y:y),15,UIColor.black.cgColor)
+
         // value ------------------------------------------
         func formatted(_ v:Float) -> String { return String(format:"%6.4f",v) }
         func formatted2(_ v:Float) -> String { return String(format:"%7.5f",v) }
@@ -130,12 +159,40 @@ class DeltaView: UIView {
     var touched = false
     
     //MARK: ==================================
+
+    func getValue(_ who:Int) -> Float {
+        if valuePointerX == nil { return 0 } // assume Y also okay
+        switch who {
+        case 0 : return valuePointerX.load(as: Float.self)
+        default: return valuePointerY.load(as: Float.self)
+        }
+    }
+    
+    func isMinValue(_ who:Int) -> Bool {
+        if valuePointerX == nil { return false }
+        
+        return getValue(who) == mRange.x
+    }
+    
+    func isMaxValue(_ who:Int) -> Bool {
+        if valuePointerX == nil { return false }
+        
+        return getValue(who) == mRange.y
+    }
+    
+    func valueRatio(_ who:Int) -> CGFloat {
+        let den = mRange.y - mRange.x
+        if den == 0 { return CGFloat(0) }
+        return CGFloat((getValue(who) - mRange.x) / den )
+    }
+    
+    //MARK: ==================================
     
     func update() -> Bool {
         if valuePointerX == nil || !active || !touched { return false }
         
-        var valueX = valuePointerX.load(as: Float.self)
-        var valueY = valuePointerY.load(as: Float.self)
+        var valueX = getValue(0)
+        var valueY = getValue(1)
 
         valueX = fClamp2(valueX + deltaX * deltaValue, mRange)
         valueY = fClamp2(valueY + deltaY * deltaValue, mRange)
@@ -189,6 +246,13 @@ class DeltaView: UIView {
     
     func drawVLine(_ x:CGFloat, _ y1:CGFloat, _ y2:CGFloat) { drawLine(CGPoint(x:x,y:y1),CGPoint(x:x,y:y2)) }
     func drawHLine(_ x1:CGFloat, _ x2:CGFloat, _ y:CGFloat) { drawLine(CGPoint(x:x1, y:y),CGPoint(x: x2, y:y)) }
+    
+    func drawFilledCircle(_ center:CGPoint, _ diameter:CGFloat, _ color:CGColor) {
+        context?.beginPath()
+        context?.addEllipse(in: CGRect(x:CGFloat(center.x - diameter/2), y:CGFloat(center.y - diameter/2), width:CGFloat(diameter), height:CGFloat(diameter)))
+        context?.setFillColor(color)
+        context?.fillPath()
+    }
     
     func drawText(_ x:CGFloat, _ y:CGFloat, _ color:UIColor, _ sz:CGFloat, _ str:String) {
         let paraStyle = NSMutableParagraphStyle()
