@@ -228,26 +228,47 @@ float3 march(float3 position, float3 direction, Control control) {
     }
     
     position -= direction/2;   // highest count position was just passed. move back so highest point is ahead of us
-    
+
+    //-----------------------------------------------------------------------
+    // find the first position where count is non-zero
     for(;;) { // binary search
         if(++jog > 10) break;
-        
+
         direction /= 2;
         if(length(direction) < 0.0001) break;
-        
+
         lowSide  = escapeCount(position-direction,control);
         highSide = escapeCount(position+direction,control);
-        
-        if(lowSide > highSide) {
-            c = lowSide;
-            position -= direction;
-        }
-        else {
-            c = highSide;
-            position += direction;
-        }
+
+        if(lowSide == 0 && highSide != 0) { c = highSide; position += direction/2; } else       // 0,1 = walk halfway to high side
+            if(lowSide != 0 && highSide == 0) { c = lowSide;  position -= direction/2; } else   // 1,0 = walk halfway to low side
+           {
+               c = (lowSide + highSide)/2;      // 1,1 = seen enough. return the average count
+               break;
+           }
     }
-    
+
+//    // this way finds the 'highest' escape count position,  not the first.
+//    for(;;) { // binary search
+//        if(++jog > 10) break;
+//
+//        direction /= 2;
+//        if(length(direction) < 0.0001) break;
+//
+//        lowSide  = escapeCount(position-direction,control);
+//        highSide = escapeCount(position+direction,control);
+//
+//        if(lowSide > highSide) {
+//            c = lowSide;
+//            position -= direction;
+//        }
+//        else {
+//            c = highSide;
+//            position += direction;
+//        }
+//    }
+    //-----------------------------------------------------------------------
+
     float len = length(position);
     
     if(c < control.iterMin) return float3(0,0,0);

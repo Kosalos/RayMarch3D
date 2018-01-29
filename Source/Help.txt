@@ -2,10 +2,10 @@ Image is rendered twice, for 'cross-eyed' 3D viewing.
 With the iPad held two feet away, slightly cross your eyes so that there is a third image in the middle.
 Relax your gaze, and concentrate only on that middle image, which is in 3D.
 
-You can  pinch the images to zoom in/out, and slide finger to move camera XY position.  
+You can  pinch the images to zoom in/out, and slide finger to move camera XY position.
+If you have a lot of black in the image, try opening up the color range (iterMin lower, iterWidth higher)
 
 A.  Slide finger to alter X,Y coordinates of camera.
-    Slide two fingers to alter Z coordinate.
     Press to either side of center of control box to specify direction and speed.
 B.  Slide finger to alter Z coordinate of camera.
 C.  Slide finger(s) to alter coordinate of focus point of camera.
