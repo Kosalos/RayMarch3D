@@ -18,13 +18,13 @@ class ViewController: UIViewController {
     lazy var commandQueue: MTLCommandQueue! = { return self.device.makeCommandQueue() }()
     
     let VIEWSIZE:Int = 500
-
+    
     let threadGroupCount = MTLSizeMake(20,20, 1)   // integer factor of image size
     lazy var threadGroups: MTLSize = { MTLSizeMake(VIEWSIZE / threadGroupCount.width, VIEWSIZE / threadGroupCount.height, 1) }()
     
     var sList:[SliderView]! = nil
     var dList:[DeltaView]! = nil
-
+    
     @IBOutlet var sCameraZ: SliderView!
     @IBOutlet var sFocusZ: SliderView!
     @IBOutlet var sIterMin: SliderView!
@@ -40,21 +40,20 @@ class ViewController: UIViewController {
     @IBOutlet var sFradius: SliderView!
     @IBOutlet var sScale: SliderView!
     @IBOutlet var sCutoff: SliderView!
-
+    
     @IBOutlet var dCameraXY: DeltaView!
     @IBOutlet var dFocusXY: DeltaView!
-
+    
     @IBOutlet var imageViewL: UIImageView!
     @IBOutlet var imageViewR: UIImageView!
     @IBOutlet var formulaSeg: UISegmentedControl!
     @IBOutlet var recordButton: UIButton!
     @IBOutlet var autoButton: UIButton!
     @IBOutlet var colorResetButton: UIButton!
-    @IBOutlet var paletteButton: UIButton!
     @IBOutlet var saveLoadButton: UIButton!
     @IBOutlet var helpButton: UIButton!
     @IBOutlet var resetButton: UIButton!
-
+    
     @IBAction func autoButtonPressed(_ sender: UIButton) { autoMove = !autoMove }
     @IBAction func resetButtonPressed(_ sender: UIButton) { reset() }
     @IBAction func recordButtonPressed(_ sender: UIButton) { nextRecordingStatus() }
@@ -71,14 +70,14 @@ class ViewController: UIViewController {
         sHsvZ.setNeedsDisplay()
         needsPaint = true
     }
-
+    
     override var prefersStatusBarHidden: Bool { return true }
     
     //MARK: -
-
+    
     let zoomMin:Float = 0.3
     let zoomMax:Float = 30
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         vc = self
@@ -88,7 +87,7 @@ class ViewController: UIViewController {
             guard let kf1 = defaultLibrary.makeFunction(name: "rayMarchShader")  else { fatalError() }
             pipeline1 = try device.makeComputePipelineState(function: kf1)
         } catch { fatalError("error creating pipelines") }
-
+        
         let textureDescriptor = MTLTextureDescriptor.texture2DDescriptor(
             pixelFormat: .bgra8Unorm_srgb,
             width: VIEWSIZE,
@@ -97,8 +96,10 @@ class ViewController: UIViewController {
         outTexture = self.device.makeTexture(descriptor: textureDescriptor)!
         
         cBuffer = device.makeBuffer(bytes: &control, length: MemoryLayout<Control>.stride, options: MTLResourceOptions.storageModeShared)
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(self.rotated), name: NSNotification.Name.UIDeviceOrientationDidChange, object: nil)
     }
-
+    
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         
@@ -135,11 +136,131 @@ class ViewController: UIViewController {
         sFradius.initializeFloat(&control.fRadius,  .delta, 1.1,3,  0.3,    "F Radius")
         sScale.initializeFloat(&control.scale,      .delta, 0.2,3,   1,     "Scale")
         sCutoff.initializeFloat(&control.cutoff,    .delta, 0.1,5,   1,     "Cutoff")
-
+        
         timer = Timer.scheduledTimer(timeInterval: 1.0/60.0, target:self, selector: #selector(timerHandler), userInfo: nil, repeats:true)
         reset()
         resetHsv()
     }
+    
+    //MARK: -
+    
+    var oldXS:CGFloat = 0
+    
+    @objc func rotated() {
+        let xs:CGFloat = view.bounds.width
+        let ys:CGFloat = view.bounds.height
+        
+        if xs == oldXS { return }
+        oldXS = xs
+        
+        if ys > xs {    // portrait
+            let left:CGFloat = (xs - 730)/2
+            let sz = xs / 2 - 2
+            imageViewL.frame = CGRect(x:0, y:0, width:sz, height:sz)
+            imageViewR.frame = CGRect(x:xs / 2 + 2, y:0, width:sz, height:sz)
+            
+            let by:CGFloat = sz + 15     // button row
+            let bys:CGFloat = 35
+            var x:CGFloat = left
+            autoButton.frame = CGRect(x:x, y:by, width:80, height:bys); x += 80 + 20
+            resetButton.frame = CGRect(x:x, y:by, width:80, height:bys); x += 80 + 20
+            formulaSeg.frame = CGRect(x:x, y:by, width:300, height:bys); x += 300 + 20
+            recordButton.frame = CGRect(x:x, y:by, width:150, height:bys)
+            
+            x = left  // camera, focus
+            let cy = by + bys + 20
+            let cxs:CGFloat = 170
+            dCameraXY.frame = CGRect(x:x, y:cy, width:cxs, height:cxs)
+            sCameraZ.frame  = CGRect(x:x, y:cy+cxs+5, width:cxs, height:35)
+            x += cxs + 10
+            dFocusXY.frame = CGRect(x:x, y:cy, width:cxs, height:cxs)
+            sFocusZ.frame  = CGRect(x:x, y:cy+cxs+5, width:cxs, height:35)
+            
+            x += cxs + 20 // iter,zoom,power
+            var y = cy
+            sIterMin.frame = CGRect(x:x, y:y, width:cxs, height:35); y += 35+10
+            sIterWidth.frame = CGRect(x:x, y:y, width:cxs, height:35); y += 35+10
+            sZoom.frame = CGRect(x:x, y:y, width:cxs, height:35); y += 35+10
+            sPower.frame = CGRect(x:x, y:y, width:cxs, height:35); y += 35+10
+            
+            x += cxs + 20 // color controls
+            y = cy
+            sHsvX.frame = CGRect(x:x, y:y, width:cxs, height:35); y += 35+10
+            sHsvY.frame = CGRect(x:x, y:y, width:cxs, height:35); y += 35+10
+            sHsvZ.frame = CGRect(x:x, y:y, width:cxs, height:35); y += 35+10
+            colorResetButton.frame = CGRect(x:x, y:y, width:cxs, height:35)
+            
+            x = left // box controls
+            y = cy + cxs + 65
+            sFlimit.frame = CGRect(x:x, y:y, width:cxs, height:35); y += 35+10
+            sFvalue.frame = CGRect(x:x, y:y, width:cxs, height:35); y += 35+10
+            sMradius.frame = CGRect(x:x, y:y, width:cxs, height:35); y += 35+10
+            sFradius.frame = CGRect(x:x, y:y, width:cxs, height:35); y += 35+10
+            sScale.frame = CGRect(x:x, y:y, width:cxs, height:35); y += 35+10
+            sCutoff.frame = CGRect(x:x, y:y, width:cxs, height:35); y += 35+30
+            
+            x = left + cxs * 3 + 20 // save/load, help
+            y = cy + cxs + 165
+            saveLoadButton.frame = CGRect(x:x, y:y, width:cxs, height:35); y += 35+30
+            helpButton.frame = CGRect(x:x, y:y, width:cxs, height:35)
+        }
+        else {          // landscape
+            let left:CGFloat = 10
+            let sz = xs / 2 - 2
+            let ixs = (xs - 4) / 2
+            imageViewL.frame = CGRect(x:0, y:0, width:ixs, height:ixs)
+            imageViewR.frame = CGRect(x:sz+2, y:0, width:ixs, height:ixs)
+            
+            let by:CGFloat = sz + 5     // button row
+            let bys:CGFloat = 35
+            var x:CGFloat = left
+            autoButton.frame = CGRect(x:x, y:by, width:80, height:bys); x += 80 + 20
+            resetButton.frame = CGRect(x:x, y:by, width:80, height:bys); x += 80 + 20
+            formulaSeg.frame = CGRect(x:x, y:by, width:300, height:bys); x += 300 + 20
+            recordButton.frame = CGRect(x:x, y:by, width:150, height:bys)
+            
+            x = left  // camera, focus
+            let cy = by + bys + 10
+            var cxs:CGFloat = 150 * xs / 1024
+            dCameraXY.frame = CGRect(x:x, y:cy, width:cxs, height:cxs)
+            sCameraZ.frame  = CGRect(x:x, y:cy+cxs+5, width:cxs, height:35)
+            x += cxs + 10
+            dFocusXY.frame = CGRect(x:x, y:cy, width:cxs, height:cxs)
+            sFocusZ.frame  = CGRect(x:x, y:cy+cxs+5, width:cxs, height:35)
+            
+            cxs += 20
+            x += cxs + 20 // iter,zoom,power
+            var y = cy
+            sIterMin.frame = CGRect(x:x, y:y, width:cxs, height:35); y += 35+10
+            sIterWidth.frame = CGRect(x:x, y:y, width:cxs, height:35); y += 35+10
+            sZoom.frame = CGRect(x:x, y:y, width:cxs, height:35); y += 35+10
+            sPower.frame = CGRect(x:x, y:y, width:cxs, height:35); y += 35+10
+            
+            x += cxs + 20 // color controls
+            y = cy
+            sHsvX.frame = CGRect(x:x, y:y, width:cxs, height:35); y += 35+10
+            sHsvY.frame = CGRect(x:x, y:y, width:cxs, height:35); y += 35+10
+            sHsvZ.frame = CGRect(x:x, y:y, width:cxs, height:35); y += 35+10
+            colorResetButton.frame = CGRect(x:x, y:y, width:cxs, height:35); y += 35+10
+            
+            x += cxs + 20 // box controls
+            y = by
+            let yhop:CGFloat = 42
+            sFlimit.frame = CGRect(x:x, y:y, width:cxs, height:35); y += yhop
+            sFvalue.frame = CGRect(x:x, y:y, width:cxs, height:35); y += yhop
+            sMradius.frame = CGRect(x:x, y:y, width:cxs, height:35); y += yhop
+            sFradius.frame = CGRect(x:x, y:y, width:cxs, height:35); y += yhop
+            sScale.frame = CGRect(x:x, y:y, width:cxs, height:35); y += yhop
+            sCutoff.frame = CGRect(x:x, y:y, width:cxs, height:35)
+            
+            x += cxs - 40 // save/load, help
+            y = by + 100
+            saveLoadButton.frame = CGRect(x:x, y:y, width:cxs, height:35); y += 35+30
+            helpButton.frame = CGRect(x:x, y:y, width:cxs, height:35)
+        }
+    }
+    
+    //MARK: -
     
     func unWrapFloat3() {
         control.cameraX = control.camera.x
@@ -152,7 +273,7 @@ class ViewController: UIViewController {
         control.hsvY = control.hsv.y
         control.hsvZ = control.hsv.z
     }
-
+    
     func wrapFloat3() {
         control.camera.x = control.cameraX
         control.camera.y = control.cameraY
@@ -164,7 +285,7 @@ class ViewController: UIViewController {
         control.hsv.y = control.hsvY
         control.hsv.z = control.hsvZ
     }
-
+    
     //MARK: -
     //MARK: -
     
@@ -184,15 +305,15 @@ class ViewController: UIViewController {
         control.fRadius = 1.3303
         control.scale = 1.5755
         control.cutoff = 1.3836
-
+        
         unWrapFloat3()
-
+        
         for s in sList { s.setNeedsDisplay() }
         for d in dList { d.setNeedsDisplay() }
-
+        
         updateActiveWidgets()
         setRecordingStatus(.idle)
-
+        
         needsPaint = true
     }
     
@@ -255,14 +376,14 @@ class ViewController: UIViewController {
         control.scale = fRatio(recordStart.scale,recordEnd.scale,mix)
         control.cutoff = fRatio(recordStart.cutoff,recordEnd.cutoff,mix)
         unWrapFloat3()
-
+        
         _ = sHsvX.update()
         _ = sHsvY.update()
         _ = sHsvZ.update()
-
+        
         needsPaint = true
     }
-
+    
     func hidePlaybackWidgets(_ hide:Bool) {
         let show = !hide
         dCameraXY.setActive(show)
@@ -280,9 +401,9 @@ class ViewController: UIViewController {
         
         updateActiveWidgets()
     }
-
+    
     //MARK: -
-
+    
     func updateActiveWidgets() {
         let box:Bool = (control.formula == 5) && (recordStatus != .playing)
         sFlimit.setActive(box)
@@ -299,7 +420,7 @@ class ViewController: UIViewController {
         updateActiveWidgets()
         needsPaint = true
     }
-
+    
     func programLoaded() {
         updateActiveWidgets()
         formulaSeg.selectedSegmentIndex = Int(control.formula)
@@ -307,7 +428,7 @@ class ViewController: UIViewController {
         for d in dList { d.setNeedsDisplay() }
         needsPaint = true
     }
-
+    
     var angle:Float = 0
     var needsPaint:Bool = false
     
@@ -321,7 +442,7 @@ class ViewController: UIViewController {
         else {
             for s in sList { if s.update() { needsPaint = true }}
             for d in dList { if d.update() { needsPaint = true }}
-
+            
             control.light.x = sinf(angle) * 5
             control.light.y = sinf(angle/3) * 5
             control.light.z = -12 + sinf(angle/2) * 5
@@ -345,7 +466,7 @@ class ViewController: UIViewController {
     
     //MARK: -
     //MARK: -
-
+    
     func parseCameraRotation(_ pt:CGPoint) {
         let scale:Float = 0.0001
         control.cameraX += Float(pt.x) * scale
@@ -367,7 +488,7 @@ class ViewController: UIViewController {
     @IBAction func panGesture(_ sender: UIPanGestureRecognizer) {
         
         if recordStatus == .playing { setRecordingStatus(.idle) }
-
+        
         let pt = sender.translation(in: self.view)
         let count = sender.numberOfTouches
         if count == 0 { numberPanTouches = 0 }  else if count > numberPanTouches { numberPanTouches = count }
@@ -378,7 +499,7 @@ class ViewController: UIViewController {
         default : break
         }
     }
-
+    
     var startZoom:Float = 0
     
     @IBAction func pinchGesture(_ sender: UIPinchGestureRecognizer) {
@@ -418,35 +539,35 @@ class ViewController: UIViewController {
         commandEncoder.setBuffer(cBuffer, offset: 0, index: 0)
         commandEncoder.dispatchThreadgroups(threadGroups, threadsPerThreadgroup: threadGroupCount)
         commandEncoder.endEncoding()
-
+        
         commandBuffer.commit()
         commandBuffer.waitUntilCompleted()
     }
     
     //MARK: -
     let bytesPerPixel: Int = 4
-
+    
     // edit Scheme, Options:  set Metal API Validation to Disabled
     // the fix is to turn off Metal API validation under Product -> Scheme -> Options
     
-//    func texture(from image: UIImage) -> MTLTexture {
-//        guard let cgImage = image.cgImage else { fatalError("Can't open image \(image)") }
-//
-//        let textureLoader = MTKTextureLoader(device: self.device)
-//        do {
-//            let textureOut = try textureLoader.newTexture(cgImage:cgImage)
-//            let textureDescriptor = MTLTextureDescriptor.texture2DDescriptor(
-//                pixelFormat: .bgra8Unorm_srgb, // textureOut.pixelFormat,
-//                width: 2000, //textureOut.width,
-//                height: 2000, //textureOut.height,
-//                mipmapped: false)
-//            let t:MTLTexture = self.device.makeTexture(descriptor: textureDescriptor)!
-//            return t // extureOut
-//        }
-//        catch {
-//            fatalError("Can't load texture")
-//        }
-//    }
+    //    func texture(from image: UIImage) -> MTLTexture {
+    //        guard let cgImage = image.cgImage else { fatalError("Can't open image \(image)") }
+    //
+    //        let textureLoader = MTKTextureLoader(device: self.device)
+    //        do {
+    //            let textureOut = try textureLoader.newTexture(cgImage:cgImage)
+    //            let textureDescriptor = MTLTextureDescriptor.texture2DDescriptor(
+    //                pixelFormat: .bgra8Unorm_srgb, // textureOut.pixelFormat,
+    //                width: 2000, //textureOut.width,
+    //                height: 2000, //textureOut.height,
+    //                mipmapped: false)
+    //            let t:MTLTexture = self.device.makeTexture(descriptor: textureDescriptor)!
+    //            return t // extureOut
+    //        }
+    //        catch {
+    //            fatalError("Can't load texture")
+    //        }
+    //    }
     
     func image(from texture: MTLTexture) -> UIImage {
         let imageByteCount = texture.width * texture.height * bytesPerPixel

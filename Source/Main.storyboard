@@ -22,8 +22,9 @@
                         <rect key="frame" x="0.0" y="0.0" width="1366" height="1024"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <view contentMode="scaleToFill" horizontalCompressionResistancePriority="250" verticalCompressionResistancePriority="250" insetsLayoutMarginsFromSafeArea="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SKK-Rp-etB" customClass="UIImageView">
+                            <view contentMode="scaleToFill" horizontalCompressionResistancePriority="250" verticalCompressionResistancePriority="250" fixedFrame="YES" insetsLayoutMarginsFromSafeArea="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SKK-Rp-etB" customClass="UIImageView">
                                 <rect key="frame" x="29" y="28" width="650" height="650"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <gestureRecognizers/>
                                 <connections>
@@ -31,47 +32,54 @@
                                     <outletCollection property="gestureRecognizers" destination="VJ7-kn-OoK" appends="YES" id="7uv-tu-EPd"/>
                                 </connections>
                             </view>
-                            <view multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="yAn-GH-5pb" customClass="DeltaView" customModule="RayMarch3D" customModuleProvider="target">
+                            <view multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="yAn-GH-5pb" customClass="DeltaView" customModule="RayMarch3D" customModuleProvider="target">
                                 <rect key="frame" x="29" y="744" width="200" height="200"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             </view>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="mbr-lr-R6E" customClass="SliderView" customModule="RayMarch3D" customModuleProvider="target">
+                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="mbr-lr-R6E" customClass="SliderView" customModule="RayMarch3D" customModuleProvider="target">
                                 <rect key="frame" x="29" y="952" width="200" height="35"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             </view>
-                            <view multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ID0-oF-IlA" customClass="DeltaView" customModule="RayMarch3D" customModuleProvider="target">
+                            <view multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ID0-oF-IlA" customClass="DeltaView" customModule="RayMarch3D" customModuleProvider="target">
                                 <rect key="frame" x="254" y="744" width="200" height="200"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             </view>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="WHx-CV-VTD" customClass="SliderView" customModule="RayMarch3D" customModuleProvider="target">
+                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="WHx-CV-VTD" customClass="SliderView" customModule="RayMarch3D" customModuleProvider="target">
                                 <rect key="frame" x="254" y="952" width="200" height="35"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             </view>
-                            <view tag="1" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="w8E-Ja-2IA" customClass="SliderView" customModule="RayMarch3D" customModuleProvider="target">
+                            <view tag="1" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="w8E-Ja-2IA" customClass="SliderView" customModule="RayMarch3D" customModuleProvider="target">
                                 <rect key="frame" x="496" y="744" width="200" height="35"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             </view>
-                            <view tag="2" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="JhW-Jc-IEF" customClass="SliderView" customModule="RayMarch3D" customModuleProvider="target">
+                            <view tag="2" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="JhW-Jc-IEF" customClass="SliderView" customModule="RayMarch3D" customModuleProvider="target">
                                 <rect key="frame" x="496" y="787" width="200" height="35"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             </view>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="nlX-sY-jg1" customClass="SliderView" customModule="RayMarch3D" customModuleProvider="target">
+                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="nlX-sY-jg1" customClass="SliderView" customModule="RayMarch3D" customModuleProvider="target">
                                 <rect key="frame" x="496" y="870" width="200" height="35"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             </view>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Pvk-9B-sIH" customClass="SliderView" customModule="RayMarch3D" customModuleProvider="target">
+                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Pvk-9B-sIH" customClass="SliderView" customModule="RayMarch3D" customModuleProvider="target">
                                 <rect key="frame" x="496" y="952" width="200" height="35"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             </view>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="IfI-Bm-apG" customClass="SliderView" customModule="RayMarch3D" customModuleProvider="target">
+                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="IfI-Bm-apG" customClass="SliderView" customModule="RayMarch3D" customModuleProvider="target">
                                 <rect key="frame" x="737" y="853" width="200" height="39"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             </view>
-                            <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="qv5-3T-FT9">
+                            <segmentedControl opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="qv5-3T-FT9">
                                 <rect key="frame" x="363" y="695" width="334" height="29"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="334" id="fQR-Fa-Nmy"/>
-                                </constraints>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <segments>
                                     <segment title="Bulb 1"/>
                                     <segment title="2"/>
@@ -85,28 +93,34 @@
                                     <action selector="formulaChanged:" destination="BV1-FR-VrT" eventType="valueChanged" id="MOc-jc-7p2"/>
                                 </connections>
                             </segmentedControl>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="YZp-Z8-783" customClass="SliderView" customModule="RayMarch3D" customModuleProvider="target">
+                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="YZp-Z8-783" customClass="SliderView" customModule="RayMarch3D" customModuleProvider="target">
                                 <rect key="frame" x="1067" y="697" width="224" height="35"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             </view>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="6HJ-3Y-4oH" customClass="SliderView" customModule="RayMarch3D" customModuleProvider="target">
+                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="6HJ-3Y-4oH" customClass="SliderView" customModule="RayMarch3D" customModuleProvider="target">
                                 <rect key="frame" x="1067" y="740" width="224" height="35"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             </view>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="8YC-b1-bke" customClass="SliderView" customModule="RayMarch3D" customModuleProvider="target">
+                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="8YC-b1-bke" customClass="SliderView" customModule="RayMarch3D" customModuleProvider="target">
                                 <rect key="frame" x="1067" y="801" width="224" height="35"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             </view>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="thp-xh-vb4" customClass="SliderView" customModule="RayMarch3D" customModuleProvider="target">
+                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="thp-xh-vb4" customClass="SliderView" customModule="RayMarch3D" customModuleProvider="target">
                                 <rect key="frame" x="1067" y="844" width="224" height="35"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             </view>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="dS8-vK-Njx" customClass="SliderView" customModule="RayMarch3D" customModuleProvider="target">
+                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="dS8-vK-Njx" customClass="SliderView" customModule="RayMarch3D" customModuleProvider="target">
                                 <rect key="frame" x="1067" y="905" width="224" height="35"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             </view>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="yfK-it-LnG">
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="yfK-it-LnG">
                                 <rect key="frame" x="111" y="698" width="42" height="32"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                 <state key="normal" title="Reset">
                                     <color key="titleColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
@@ -115,16 +129,14 @@
                                     <action selector="resetButtonPressed:" destination="BV1-FR-VrT" eventType="touchUpInside" id="Pra-dd-cje"/>
                                 </connections>
                             </button>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Og9-s0-bGh" customClass="SliderView" customModule="RayMarch3D" customModuleProvider="target">
+                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Og9-s0-bGh" customClass="SliderView" customModule="RayMarch3D" customModuleProvider="target">
                                 <rect key="frame" x="1067" y="952" width="224" height="35"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             </view>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0s4-3P-JPg">
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0s4-3P-JPg">
                                 <rect key="frame" x="20" y="695" width="47" height="35"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="47" id="Gzx-xf-L9X"/>
-                                    <constraint firstAttribute="height" constant="35" id="tbO-bO-17r"/>
-                                </constraints>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="Auto">
                                     <color key="titleColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
@@ -132,16 +144,15 @@
                                     <action selector="autoButtonPressed:" destination="BV1-FR-VrT" eventType="touchUpInside" id="oN6-3p-rXY"/>
                                 </connections>
                             </button>
-                            <view contentMode="scaleToFill" horizontalCompressionResistancePriority="250" verticalCompressionResistancePriority="250" insetsLayoutMarginsFromSafeArea="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yRj-iz-7z3" customClass="UIImageView">
+                            <view contentMode="scaleToFill" horizontalCompressionResistancePriority="250" verticalCompressionResistancePriority="250" fixedFrame="YES" insetsLayoutMarginsFromSafeArea="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yRj-iz-7z3" customClass="UIImageView">
                                 <rect key="frame" x="687" y="28" width="650" height="650"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <gestureRecognizers/>
                             </view>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="q7l-bj-gmm">
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="q7l-bj-gmm">
                                 <rect key="frame" x="1310" y="894" width="45" height="45"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="45" id="g2w-Vz-MdV"/>
-                                </constraints>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                 <state key="normal" title="S/L">
                                     <color key="titleColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
@@ -152,19 +163,18 @@
                                     </segue>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="infoLight" showsTouchWhenHighlighted="YES" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4pc-23-bHB">
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="infoLight" showsTouchWhenHighlighted="YES" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4pc-23-bHB">
                                 <rect key="frame" x="1324" y="953" width="22" height="39"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <connections>
                                     <segue destination="JoG-kx-wUK" kind="popoverPresentation" popoverAnchorView="4pc-23-bHB" id="oks-id-KFV">
                                         <popoverArrowDirection key="popoverArrowDirection" up="YES" down="YES" left="YES" right="YES"/>
                                     </segue>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nKw-Q9-2yy">
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nKw-Q9-2yy">
                                 <rect key="frame" x="743" y="697" width="189" height="32"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="189" id="FDx-kJ-TrJ"/>
-                                </constraints>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                 <state key="normal" title="###############">
                                     <color key="titleColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
@@ -173,19 +183,19 @@
                                     <action selector="recordButtonPressed:" destination="BV1-FR-VrT" eventType="touchUpInside" id="uFP-2q-WcS"/>
                                 </connections>
                             </button>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="nwG-py-18r" customClass="SliderView" customModule="RayMarch3D" customModuleProvider="target">
+                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="nwG-py-18r" customClass="SliderView" customModule="RayMarch3D" customModuleProvider="target">
                                 <rect key="frame" x="737" y="801" width="200" height="35"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             </view>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="LHE-SK-2H3" customClass="SliderView" customModule="RayMarch3D" customModuleProvider="target">
+                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="LHE-SK-2H3" customClass="SliderView" customModule="RayMarch3D" customModuleProvider="target">
                                 <rect key="frame" x="737" y="744" width="200" height="35"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             </view>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="upQ-Su-Tdc">
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="upQ-Su-Tdc">
                                 <rect key="frame" x="837" y="909" width="110" height="30"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="110" id="FEt-UT-1JE"/>
-                                </constraints>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="Reset Colors">
                                     <color key="titleColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
@@ -196,100 +206,6 @@
                         </subviews>
                         <color key="backgroundColor" red="0.098039217289999994" green="0.098039217289999994" blue="0.098039217289999994" alpha="1" colorSpace="calibratedRGB"/>
                         <gestureRecognizers/>
-                        <constraints>
-                            <constraint firstItem="q7l-bj-gmm" firstAttribute="trailing" secondItem="4pc-23-bHB" secondAttribute="trailing" constant="9" id="09b-XV-kog"/>
-                            <constraint firstItem="w8E-Ja-2IA" firstAttribute="top" secondItem="ID0-oF-IlA" secondAttribute="top" id="0LV-69-3U8"/>
-                            <constraint firstItem="vHI-nA-MU4" firstAttribute="top" secondItem="upQ-Su-Tdc" secondAttribute="bottom" constant="85" id="1Jg-IS-9i4"/>
-                            <constraint firstItem="4pc-23-bHB" firstAttribute="leading" secondItem="Og9-s0-bGh" secondAttribute="trailing" constant="33" id="1dm-ij-zz9"/>
-                            <constraint firstItem="dS8-vK-Njx" firstAttribute="top" secondItem="3se-qz-xqx" secondAttribute="top" constant="905" id="25d-rO-97P"/>
-                            <constraint firstItem="yAn-GH-5pb" firstAttribute="top" secondItem="0s4-3P-JPg" secondAttribute="bottom" constant="14" id="2gY-gF-dzd"/>
-                            <constraint firstItem="YZp-Z8-783" firstAttribute="trailing" secondItem="6HJ-3Y-4oH" secondAttribute="trailing" id="2m4-uB-ITO"/>
-                            <constraint firstItem="JhW-Jc-IEF" firstAttribute="leading" secondItem="nlX-sY-jg1" secondAttribute="leading" id="3Jv-pQ-d4L"/>
-                            <constraint firstItem="dS8-vK-Njx" firstAttribute="top" secondItem="thp-xh-vb4" secondAttribute="bottom" constant="26" id="3cm-dB-n60"/>
-                            <constraint firstItem="Pvk-9B-sIH" firstAttribute="top" secondItem="nlX-sY-jg1" secondAttribute="bottom" constant="47" id="4Hl-IC-Rl3"/>
-                            <constraint firstItem="nlX-sY-jg1" firstAttribute="leading" secondItem="Pvk-9B-sIH" secondAttribute="leading" id="4Q8-50-69B"/>
-                            <constraint firstItem="Pvk-9B-sIH" firstAttribute="top" secondItem="3se-qz-xqx" secondAttribute="top" constant="952" id="4hw-eB-atr"/>
-                            <constraint firstItem="SKK-Rp-etB" firstAttribute="centerX" secondItem="ID0-oF-IlA" secondAttribute="centerX" id="5Gi-n1-Mx6"/>
-                            <constraint firstItem="8YC-b1-bke" firstAttribute="top" secondItem="6HJ-3Y-4oH" secondAttribute="bottom" constant="26" id="5OK-Np-Bqk"/>
-                            <constraint firstItem="nwG-py-18r" firstAttribute="leading" secondItem="IfI-Bm-apG" secondAttribute="leading" id="6lV-PI-WOV"/>
-                            <constraint firstItem="8YC-b1-bke" firstAttribute="trailing" secondItem="thp-xh-vb4" secondAttribute="trailing" id="6lW-GH-spM"/>
-                            <constraint firstItem="Pvk-9B-sIH" firstAttribute="top" secondItem="WHx-CV-VTD" secondAttribute="top" id="7aK-J8-mPI"/>
-                            <constraint firstItem="nwG-py-18r" firstAttribute="top" secondItem="LHE-SK-2H3" secondAttribute="bottom" constant="22" id="7bO-Rf-gtH"/>
-                            <constraint firstItem="yAn-GH-5pb" firstAttribute="trailing" secondItem="mbr-lr-R6E" secondAttribute="trailing" id="7ny-zq-hOS"/>
-                            <constraint firstItem="JhW-Jc-IEF" firstAttribute="top" secondItem="w8E-Ja-2IA" secondAttribute="bottom" constant="8" symbolic="YES" id="8ap-YN-s0V"/>
-                            <constraint firstItem="IfI-Bm-apG" firstAttribute="top" secondItem="nwG-py-18r" secondAttribute="bottom" constant="17" id="8hy-th-lXD"/>
-                            <constraint firstItem="q7l-bj-gmm" firstAttribute="trailing" secondItem="3se-qz-xqx" secondAttribute="trailingMargin" constant="9" id="9Nj-Fj-guK"/>
-                            <constraint firstItem="vHI-nA-MU4" firstAttribute="top" secondItem="dS8-vK-Njx" secondAttribute="bottom" constant="84" id="9dq-fn-5br"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="yRj-iz-7z3" secondAttribute="trailing" constant="9" id="9oM-Ft-ySi"/>
-                            <constraint firstItem="nlX-sY-jg1" firstAttribute="top" secondItem="JhW-Jc-IEF" secondAttribute="bottom" constant="48" id="9qR-Q8-SuA"/>
-                            <constraint firstItem="nwG-py-18r" firstAttribute="bottom" secondItem="8YC-b1-bke" secondAttribute="bottom" id="AU2-hk-V5S"/>
-                            <constraint firstItem="JhW-Jc-IEF" firstAttribute="trailing" secondItem="nlX-sY-jg1" secondAttribute="trailing" id="B4C-vF-E8x"/>
-                            <constraint firstItem="SKK-Rp-etB" firstAttribute="top" secondItem="Atg-ry-fnb" secondAttribute="bottom" constant="8" symbolic="YES" id="CMO-Me-dGE"/>
-                            <constraint firstItem="6HJ-3Y-4oH" firstAttribute="top" secondItem="3se-qz-xqx" secondAttribute="top" constant="740" id="Evg-ZJ-VvP"/>
-                            <constraint firstItem="mbr-lr-R6E" firstAttribute="bottom" secondItem="WHx-CV-VTD" secondAttribute="bottom" id="GPH-ad-peE"/>
-                            <constraint firstItem="SKK-Rp-etB" firstAttribute="top" secondItem="yRj-iz-7z3" secondAttribute="top" id="HfN-vK-WeN"/>
-                            <constraint firstItem="LHE-SK-2H3" firstAttribute="leading" secondItem="3se-qz-xqx" secondAttribute="leading" constant="737" id="Hoj-To-qdJ"/>
-                            <constraint firstItem="nlX-sY-jg1" firstAttribute="trailing" secondItem="Pvk-9B-sIH" secondAttribute="trailing" id="IWe-3J-lm9"/>
-                            <constraint firstItem="w8E-Ja-2IA" firstAttribute="leading" secondItem="ID0-oF-IlA" secondAttribute="trailing" constant="42" id="Jt5-Qq-YNW"/>
-                            <constraint firstItem="nKw-Q9-2yy" firstAttribute="centerY" secondItem="0s4-3P-JPg" secondAttribute="centerY" id="KBP-U2-x41"/>
-                            <constraint firstItem="w8E-Ja-2IA" firstAttribute="leading" secondItem="3se-qz-xqx" secondAttribute="leading" constant="496" id="KRg-lS-bqP"/>
-                            <constraint firstItem="thp-xh-vb4" firstAttribute="trailing" secondItem="dS8-vK-Njx" secondAttribute="trailing" id="L1X-7W-7Wf"/>
-                            <constraint firstItem="ID0-oF-IlA" firstAttribute="leading" secondItem="yAn-GH-5pb" secondAttribute="trailing" constant="25" id="LWm-aI-yDj"/>
-                            <constraint firstItem="upQ-Su-Tdc" firstAttribute="top" secondItem="IfI-Bm-apG" secondAttribute="bottom" constant="17" id="M5z-S2-aso"/>
-                            <constraint firstItem="6HJ-3Y-4oH" firstAttribute="trailing" secondItem="8YC-b1-bke" secondAttribute="trailing" id="NGb-x7-fWU"/>
-                            <constraint firstItem="yAn-GH-5pb" firstAttribute="bottom" secondItem="ID0-oF-IlA" secondAttribute="bottom" id="ObT-lr-tI3"/>
-                            <constraint firstItem="nKw-Q9-2yy" firstAttribute="top" secondItem="YZp-Z8-783" secondAttribute="top" id="Pvd-Zs-ir3"/>
-                            <constraint firstItem="vHI-nA-MU4" firstAttribute="top" secondItem="mbr-lr-R6E" secondAttribute="bottom" constant="37" id="Pxg-3Z-oLO"/>
-                            <constraint firstItem="6HJ-3Y-4oH" firstAttribute="top" secondItem="YZp-Z8-783" secondAttribute="bottom" constant="8" symbolic="YES" id="Q3r-4K-8cx"/>
-                            <constraint firstItem="mbr-lr-R6E" firstAttribute="top" secondItem="WHx-CV-VTD" secondAttribute="top" id="QLl-ZY-mTJ"/>
-                            <constraint firstItem="ID0-oF-IlA" firstAttribute="leading" secondItem="WHx-CV-VTD" secondAttribute="leading" id="S2N-UQ-QDr"/>
-                            <constraint firstItem="8YC-b1-bke" firstAttribute="top" secondItem="3se-qz-xqx" secondAttribute="top" constant="801" id="TSY-Ds-deQ"/>
-                            <constraint firstItem="YZp-Z8-783" firstAttribute="leading" secondItem="6HJ-3Y-4oH" secondAttribute="leading" id="TTs-Eo-Rlf"/>
-                            <constraint firstItem="yfK-it-LnG" firstAttribute="leading" secondItem="0s4-3P-JPg" secondAttribute="trailing" constant="44" id="Tac-mh-DP6"/>
-                            <constraint firstItem="w8E-Ja-2IA" firstAttribute="bottom" secondItem="LHE-SK-2H3" secondAttribute="bottom" id="UNC-A3-NQK"/>
-                            <constraint firstItem="nwG-py-18r" firstAttribute="top" secondItem="8YC-b1-bke" secondAttribute="top" id="UNE-Ja-l7p"/>
-                            <constraint firstItem="nKw-Q9-2yy" firstAttribute="leading" secondItem="qv5-3T-FT9" secondAttribute="trailing" constant="46" id="Ube-b2-gZn"/>
-                            <constraint firstItem="w8E-Ja-2IA" firstAttribute="trailing" secondItem="JhW-Jc-IEF" secondAttribute="trailing" id="Ubz-cC-MVC"/>
-                            <constraint firstItem="mbr-lr-R6E" firstAttribute="top" secondItem="yAn-GH-5pb" secondAttribute="bottom" constant="8" id="WyY-zA-qTH"/>
-                            <constraint firstItem="w8E-Ja-2IA" firstAttribute="top" secondItem="LHE-SK-2H3" secondAttribute="top" id="Yh2-Pd-ak4"/>
-                            <constraint firstItem="yAn-GH-5pb" firstAttribute="top" secondItem="yfK-it-LnG" secondAttribute="bottom" constant="14" id="a0r-Hn-AUE"/>
-                            <constraint firstItem="Pvk-9B-sIH" firstAttribute="bottom" secondItem="WHx-CV-VTD" secondAttribute="bottom" id="a4Y-Lx-XEh"/>
-                            <constraint firstItem="yAn-GH-5pb" firstAttribute="top" secondItem="3se-qz-xqx" secondAttribute="top" constant="744" id="aN4-Pt-4uY"/>
-                            <constraint firstItem="yAn-GH-5pb" firstAttribute="leading" secondItem="mbr-lr-R6E" secondAttribute="leading" id="abC-Mk-0hl"/>
-                            <constraint firstItem="q7l-bj-gmm" firstAttribute="bottom" secondItem="upQ-Su-Tdc" secondAttribute="bottom" id="afu-JW-fSC"/>
-                            <constraint firstItem="qv5-3T-FT9" firstAttribute="top" secondItem="0s4-3P-JPg" secondAttribute="top" id="auI-Z7-ltJ"/>
-                            <constraint firstItem="ID0-oF-IlA" firstAttribute="trailing" secondItem="WHx-CV-VTD" secondAttribute="trailing" id="bCN-FO-fvu"/>
-                            <constraint firstItem="YZp-Z8-783" firstAttribute="leading" secondItem="3se-qz-xqx" secondAttribute="leading" constant="1067" id="bXN-o8-GqY"/>
-                            <constraint firstItem="nwG-py-18r" firstAttribute="trailing" secondItem="IfI-Bm-apG" secondAttribute="trailing" id="cEx-N6-mKy"/>
-                            <constraint firstItem="thp-xh-vb4" firstAttribute="top" secondItem="3se-qz-xqx" secondAttribute="top" constant="844" id="cGu-Ik-gMO"/>
-                            <constraint firstItem="nKw-Q9-2yy" firstAttribute="centerX" secondItem="LHE-SK-2H3" secondAttribute="centerX" id="chF-EL-aLb"/>
-                            <constraint firstItem="ID0-oF-IlA" firstAttribute="leading" secondItem="3se-qz-xqx" secondAttribute="leading" constant="254" id="dIg-xt-NoY"/>
-                            <constraint firstItem="6HJ-3Y-4oH" firstAttribute="leading" secondItem="8YC-b1-bke" secondAttribute="leading" id="dk1-tJ-Ro9"/>
-                            <constraint firstItem="0s4-3P-JPg" firstAttribute="leading" secondItem="3se-qz-xqx" secondAttribute="leading" constant="20" id="dof-2m-hb1"/>
-                            <constraint firstItem="vHI-nA-MU4" firstAttribute="top" secondItem="4pc-23-bHB" secondAttribute="bottom" constant="32" id="g5G-Lh-VE9"/>
-                            <constraint firstItem="nwG-py-18r" firstAttribute="leading" secondItem="LHE-SK-2H3" secondAttribute="leading" id="jCt-15-tKX"/>
-                            <constraint firstItem="8YC-b1-bke" firstAttribute="leading" secondItem="thp-xh-vb4" secondAttribute="leading" id="jcE-CL-8Zg"/>
-                            <constraint firstItem="SKK-Rp-etB" firstAttribute="leading" secondItem="3se-qz-xqx" secondAttribute="leadingMargin" constant="9" id="jrl-wM-61K"/>
-                            <constraint firstItem="thp-xh-vb4" firstAttribute="top" secondItem="8YC-b1-bke" secondAttribute="bottom" constant="8" symbolic="YES" id="krz-37-J93"/>
-                            <constraint firstItem="Pvk-9B-sIH" firstAttribute="bottom" secondItem="Og9-s0-bGh" secondAttribute="bottom" id="mfo-b7-Bmy"/>
-                            <constraint firstItem="4pc-23-bHB" firstAttribute="top" secondItem="q7l-bj-gmm" secondAttribute="bottom" constant="14" id="mjX-lV-0Te"/>
-                            <constraint firstItem="nlX-sY-jg1" firstAttribute="top" secondItem="3se-qz-xqx" secondAttribute="top" constant="870" id="nAO-BZ-8oJ"/>
-                            <constraint firstItem="nwG-py-18r" firstAttribute="trailing" secondItem="LHE-SK-2H3" secondAttribute="trailing" id="oQ2-aP-eS3"/>
-                            <constraint firstItem="q7l-bj-gmm" firstAttribute="leading" secondItem="dS8-vK-Njx" secondAttribute="trailing" constant="19" id="oYC-eN-lE1"/>
-                            <constraint firstItem="thp-xh-vb4" firstAttribute="leading" secondItem="dS8-vK-Njx" secondAttribute="leading" id="oap-Ij-ph9"/>
-                            <constraint firstItem="SKK-Rp-etB" firstAttribute="bottom" secondItem="yRj-iz-7z3" secondAttribute="bottom" id="qev-vc-0qM"/>
-                            <constraint firstItem="LHE-SK-2H3" firstAttribute="leading" secondItem="w8E-Ja-2IA" secondAttribute="trailing" constant="41" id="qg8-TD-xAP"/>
-                            <constraint firstItem="Og9-s0-bGh" firstAttribute="leading" secondItem="dS8-vK-Njx" secondAttribute="leading" id="sSd-JW-9Zr"/>
-                            <constraint firstAttribute="trailing" secondItem="upQ-Su-Tdc" secondAttribute="trailing" constant="419" id="tRf-dt-0MS"/>
-                            <constraint firstItem="qv5-3T-FT9" firstAttribute="top" secondItem="SKK-Rp-etB" secondAttribute="bottom" constant="17" id="txD-uY-u8M"/>
-                            <constraint firstItem="yRj-iz-7z3" firstAttribute="leading" secondItem="SKK-Rp-etB" secondAttribute="trailing" constant="8" symbolic="YES" id="ube-Wr-2sh"/>
-                            <constraint firstItem="Pvk-9B-sIH" firstAttribute="top" secondItem="Og9-s0-bGh" secondAttribute="top" id="vNb-JA-DOR"/>
-                            <constraint firstItem="qv5-3T-FT9" firstAttribute="leading" secondItem="3se-qz-xqx" secondAttribute="leading" constant="363" id="w9K-oe-XZn"/>
-                            <constraint firstItem="yAn-GH-5pb" firstAttribute="top" secondItem="ID0-oF-IlA" secondAttribute="top" id="wpK-YO-7Z5"/>
-                            <constraint firstItem="Og9-s0-bGh" firstAttribute="trailing" secondItem="dS8-vK-Njx" secondAttribute="trailing" id="x3S-4F-UAb"/>
-                            <constraint firstItem="SKK-Rp-etB" firstAttribute="leading" secondItem="yAn-GH-5pb" secondAttribute="leading" id="yON-MS-JMr"/>
-                            <constraint firstItem="w8E-Ja-2IA" firstAttribute="leading" secondItem="JhW-Jc-IEF" secondAttribute="leading" id="zaT-Kx-bEV"/>
-                        </constraints>
                     </view>
                     <connections>
                         <outlet property="autoButton" destination="0s4-3P-JPg" id="Kdk-If-ofY"/>
