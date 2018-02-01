@@ -15,7 +15,8 @@ Relax your gaze, and concentrate only on that middle image, which is in 3D).
 //Hope to fix this soon.
 
 Update: new version does layout programmatically, for iPad mini, 10.5" and 12.9" pros,  portrait and landscape.
-please let me know it it doesn't work for you.
+
+Please let me know it it doesn't work for you.
 
 Also note: if the program crashes, complaining about the texture not configured, do the following:
 Edit the Scheme: Run - Options:  set Metal API Validation to "Disabled"
